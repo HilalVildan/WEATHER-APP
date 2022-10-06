@@ -1,0 +1,108 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-image: url(./sea-7039471_960_720.jpeg) ;
+    background-size: cover ;
+    background-repeat: no-repeat;
+
+    
+}
+.main{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: flex-start;
+    align-items:center ;
+    flex-direction: column;
+    margin-top: 70px;
+    
+
+}
+
+.header{
+    font-size: 80px;
+    color: #5E0231;
+    margin-bottom: 50px;
+
+}
+
+.input-group{
+    /* border: 2px solid red; */
+    gap: 25px !important;
+    margin-bottom: 50px !important;
+    height: 60px;
+    
+}
+
+.form-control{
+    /* width: 50vw !important; */
+    border: none;
+    outline: none;
+    /* border-bottom: 1px solid white; */
+    background-color: transparent;
+    border-bottom:  2px solid white;
+    margin-top: 20px;
+    color: white;
+    font-size: 2rem;
+    
+
+    
+    
+    
+}
+
+.form-control:focus {
+  /* outline: none !important; */
+  
+  /* border: none !important; */
+  background-color: transparent;
+ 
+}
+
+.btn{
+    width: 150px;
+    font-size: 35px;
+    border-radius: 15px;
+}
+
+.text{
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.city{
+    
+    height: 80vh;
+    width: 80vw;
+    
+}
+
+
+
+.card{
+    
+height: 50vh !important;
+width: 20vw !important;
+
+
+
+
+
+}
+
+.div-1{
+    height: 20%;
+    padding-top: 2rem;
+    
+}
+
+.sup-box{
+    border-radius: 30%;
+    color: white;
+   
+
+}
