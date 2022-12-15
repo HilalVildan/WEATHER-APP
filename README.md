@@ -6,9 +6,9 @@ https://weather-app-proje.netlify.app/
 ​
 Created a weather app with JS that displays the current weather based on the entered city name.
 ​
-## Project image
+## Project GIF
 ​
-![proje image](/Ekran%20Resmi%202022-09-27%2015.11.28.png)
+![proje image](/MTVideo.gif)
 
 ## Technologies used
 ​
