@@ -19,7 +19,7 @@ form.addEventListener("submit", async (e) => {
     ).then((response) => response.json());
 
     if (spanListArray.includes(data.name)) {
-      text.textContent = `You already know the weater for ${input.value}, pelease search for enother City!`;
+      text.textContent = `You already know the weather for ${input.value}, please search for another city!`;
       setTimeout(() => {
         text.textContent = "";
       }, 5000);
@@ -27,7 +27,7 @@ form.addEventListener("submit", async (e) => {
       showScreen(data);
     }
   } catch (error) {
-    text.textContent = "City not found !";
+    text.textContent = "City not found!";
     setTimeout(() => {
       text.textContent = "";
     }, 5000);
