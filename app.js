@@ -1,89 +1,60 @@
-let liste = [];
+// 359505d2111f984f85000a01e255d68c
+
+const liste = [];
+const form = document.querySelector("form");
 const text = document.querySelector(".text");
-const ekran = document.querySelector(".row");
+const input = document.querySelector(".input");
+const city = document.querySelector(".city");
+const buton = document.querySelector(".btn");
+const idNumber = "359505d2111f984f85000a01e255d68c";
 
-const getirCity = async (name) => {
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const spanList = city.querySelectorAll("div span");
+  const spanListArray = Array.from(spanList).map((span) => span.innerText);
+  // console.log(spanListArray);
   try {
-    const response = await fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=${name}&appid=359505d2111f984f85000a01e255d68c&units=metric`
-    );
+    const data = await fetch(
+      `https://api.openweathermap.org/data/2.5/weather?q=${input.value}&appid=${idNumber}&units=metric`
+    ).then((response) => response.json());
 
-    if (!response.ok) {
-      throw new Error("Böyle bir sehir yok");
-      
+    if (spanListArray.includes(data.name)) {
+      text.textContent = `You already know the weater for ${input.value}, pelease search for enother City!`;
+      setTimeout(() => {
+        text.textContent = "";
+      }, 5000);
+    } else {
+      showScreen(data);
     }
-
-    const data = await response.json();
-
-
-    ekranaBastir(data);
-    // console.log(data);
   } catch (error) {
-    alert(error.message);
-  }
-};
-
-document.querySelector(".btn").onclick = (event) => {
-  let cityName = document.querySelector(".form-control").value;
-  document.querySelector(".form-control").value = "";
-  
-  event.preventDefault();
-
-  if (liste.includes(cityName)) {
-    text.textContent =
-      "You already know the weater for a city, please search for enother city";
-
-
+    text.textContent = "City not found !";
     setTimeout(() => {
       text.textContent = "";
-    }, 2000);
-  } else {
-    liste.push(cityName);
-    getirCity(cityName);
+    }, 5000);
   }
-  console.log(liste);
-};
 
-//ekrana bastirma
+  form.reset();
+});
 
-ekranaBastir = (data) => {
+const showScreen = (data) => {
   const { name, main, sys, weather } = data;
+  console.log(name);
   const iconUrl = `http://openweathermap.org/img/wn/${weather[0].icon}@2x.png`;
-
-  ekran.innerHTML += `<div class=" col-md-8 col-lg-6 col-xl-4 d-flex justify-content-center align-items-center g-5">
-
-    <div class="card" style="color: #4B515D; border-radius: 35px;">
-   
-   <div class="card-body p-4">
-
-            <div class=" div-1 d-flex">
-              <h3 class="flex-grow-1" style="font-size: 2rem;" > ${name} <sup class=" sup-box bg-warning  ">&nbsp;&nbsp;${
+  city.innerHTML += `
+ 
+  <div class=" card border border-1" style="width: 19rem; height:22rem;">
+  
+  <div class="card-body">
+     <h3 class="card-title mt-4 text-info"> <span>${name}</span>  <sup class='country text-white bg-warning'>${
     sys.country
-  }&nbsp;&nbsp;</sup> </h3>
-            
-            </div>
+  }</sup> </h3>
+    <p class="card-text mt-2 display-1 mb-2 fw-bold ">${Math.ceil(
+      main.temp
+    )}<sup class='sup'>°C</sup></p>
+    <img src=${iconUrl}> </img>
+   <h3 class="card-text mt-4 text-info fw-light">${weather[0].description.toUpperCase()}</h3>
+  </div>
+</div>
 
-            <div class="d-flex flex-column text-center mt-4 mb-4">
-              <p class="display-4 mb-0 font-weight-bold" style="color: #1C2331; font-size: 5rem;"> ${Math.ceil(
-                main.temp
-              )} <sup>°C</sup> </p>
-            </div>
-
-            <div class="d-flex align-items-center flex-column ">
-<div>
-                <img src=${iconUrl}
-                  width="100px">
-              </div>
-
-
-              <div class="flex-grow-1" style="font-size: 1rem;">
-                <h3 class="card-text mt-5 text-info fw-light">${weather[0].description.toUpperCase()}</h3>
-              </div>
-              
-            </div>
-
-          </div>
-          </div>
-          
-          </div>`;
+    `;
 };
