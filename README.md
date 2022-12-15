@@ -8,7 +8,7 @@ Created a weather app with JS that displays the current weather based on the ent
 ​
 ## Project GIF
 ​
-![proje image](/MTVideo.gif)
+![proje image](/MTVideo-2.gif)
 
 ## Technologies used
 ​
